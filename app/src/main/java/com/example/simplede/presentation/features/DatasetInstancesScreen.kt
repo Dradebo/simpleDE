@@ -1,4 +1,4 @@
-package com.example.simplede.presentation.screens
+package com.example.simplede.presentation.features
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -6,8 +6,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.FilterList
+import androidx.compose.material.icons.filled.Sync
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import org.hisp.dhis.mobile.ui.designsystem.theme.TextColor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,7 +29,23 @@ import org.hisp.dhis.mobile.ui.designsystem.component.state.rememberAdditionalIn
 fun DatasetInstancesScreen(navController: NavController) {
     BaseScreen(
         title = "Dataset Instances",
-        navController = navController
+        navController = navController,
+        actions = {
+            IconButton(onClick = { /* TODO: Implement sync */ }) {
+                Icon(
+                    imageVector = Icons.Default.Sync,
+                    contentDescription = "Sync",
+                    tint = TextColor.OnSurface
+                )
+            }
+            IconButton(onClick = { /* TODO: Implement filter */ }) {
+                Icon(
+                    imageVector = Icons.Default.FilterList,
+                    contentDescription = "Filter",
+                    tint = TextColor.OnSurface
+                )
+            }
+        }
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             val titleModel = ListCardTitleModel(
