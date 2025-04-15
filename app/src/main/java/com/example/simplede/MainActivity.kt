@@ -10,9 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import androidx.navigation.NavType
 import com.example.simplede.presentation.features.CreateNewEntryScreen
 import com.example.simplede.presentation.features.DatasetInstancesScreen
-import com.example.simplede.presentation.features.DatasetsScreen
+import com.example.simplede.presentation.features.datasets.DatasetsScreen
 import com.example.simplede.presentation.features.EditEntryScreen
 import com.example.simplede.presentation.features.login.LoginScreen
 import org.hisp.dhis.mobile.ui.designsystem.theme.DHIS2Theme
@@ -30,7 +32,21 @@ class MainActivity : ComponentActivity() {
                     NavHost(navController = navController, startDestination = "Login") {
                         composable("Login") { LoginScreen(navController) }
                         composable("Datasets") { DatasetsScreen(navController) }
-                        composable("DatasetInstances") { DatasetInstancesScreen(navController) }
+                        composable(
+                            route = "DatasetInstances/{datasetId}/{datasetName}",
+                            arguments = listOf(
+                                navArgument("datasetId") { type = NavType.StringType },
+                                navArgument("datasetName") { type = NavType.StringType }
+                            )
+                        ) { backStackEntry ->
+                            val datasetId = backStackEntry.arguments?.getString("datasetId") ?: ""
+                            val datasetName = backStackEntry.arguments?.getString("datasetName") ?: ""
+                            DatasetInstancesScreen(
+                                navController = navController,
+                                datasetId = datasetId,
+                                datasetName = datasetName
+                            )
+                        }
                         composable("CreateNewEntry") { CreateNewEntryScreen(navController) }
                         composable("EditEntry") { EditEntryScreen(navController) }
                     }
@@ -38,4 +54,4 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-} 
+}

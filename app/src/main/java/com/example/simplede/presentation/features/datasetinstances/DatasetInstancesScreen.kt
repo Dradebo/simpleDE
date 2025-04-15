@@ -1,29 +1,19 @@
-package com.example.simplede.presentation.features
+package com.example.simplede.presentation.features.datasetinstances
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.FilterList
-import androidx.compose.material.icons.filled.Sync
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import org.hisp.dhis.mobile.ui.designsystem.theme.TextColor
-import androidx.compose.runtime.Composable
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.simplede.presentation.components.BaseScreen
-import org.hisp.dhis.mobile.ui.designsystem.component.AdditionalInfoItem
-import org.hisp.dhis.mobile.ui.designsystem.component.ListCard
-import org.hisp.dhis.mobile.ui.designsystem.component.ListCardDescriptionModel
-import org.hisp.dhis.mobile.ui.designsystem.component.ListCardTitleModel
+import org.hisp.dhis.mobile.ui.designsystem.component.*
 import org.hisp.dhis.mobile.ui.designsystem.component.state.rememberListCardState
 import org.hisp.dhis.mobile.ui.designsystem.component.state.rememberAdditionalInfoColumnState
+import org.hisp.dhis.mobile.ui.designsystem.theme.TextColor
 
 @Composable
 fun DatasetInstancesScreen(
@@ -98,4 +88,4 @@ fun DatasetInstancesScreen(
             }
         }
     }
-} 
+}
