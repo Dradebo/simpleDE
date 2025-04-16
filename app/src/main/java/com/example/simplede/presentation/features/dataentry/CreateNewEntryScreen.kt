@@ -1,5 +1,6 @@
-package com.example.simplede.presentation.features
+package com.example.simplede.presentation.features.dataentry
 
+import android.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,7 +30,12 @@ import com.example.simplede.presentation.components.BaseScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CreateNewEntryScreen(navController: NavController) {
+fun CreateNewEntryScreen(
+    navController: NavController,
+    datasetId: String,
+    datasetName: String,
+    viewModel: DataEntryViewModel
+) {
     BaseScreen(
         title = "Create New Entry",
         navController = navController
@@ -49,7 +55,7 @@ fun CreateNewEntryScreen(navController: NavController) {
         ) {
             // Clipboard with plus icon
             Icon(
-                painter = painterResource(id = android.R.drawable.ic_menu_edit),
+                painter = painterResource(id = R.drawable.ic_menu_edit),
                 contentDescription = "New Entry",
                 modifier = Modifier.size(48.dp)
             )
@@ -170,7 +176,16 @@ fun CreateNewEntryScreen(navController: NavController) {
                 contentAlignment = Alignment.BottomEnd
             ) {
                 Button(
-                    onClick = { navController.navigate("EditEntry") },
+                    onClick = {
+                        val state = viewModel.state.value
+                        val encodedDatasetName = java.net.URLEncoder.encode(datasetName, "UTF-8")
+                        val encodedPeriod = java.net.URLEncoder.encode(period, "UTF-8")
+                        val encodedAttributeOptionCombo = java.net.URLEncoder.encode(attribute.ifEmpty { "default" }, "UTF-8")
+                        
+                        navController.navigate(
+                            "EditEntry/$datasetId/${state.instanceId}/$encodedDatasetName/$encodedPeriod/$encodedAttributeOptionCombo"
+                        )
+                    },
                     modifier = Modifier.padding(16.dp)
                 ) {
                     Text("Next")
