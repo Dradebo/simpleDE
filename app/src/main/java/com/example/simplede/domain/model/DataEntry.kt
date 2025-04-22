@@ -1,5 +1,6 @@
 package com.example.simplede.domain.model
 
+
 data class DataValue(
     val dataElement: String,
     val categoryOptionCombo: String,
@@ -29,5 +30,14 @@ data class ValueHistory(
     val storedBy: String,
     val comment: String?
 )
+
+enum class DataEntryType {
+    TEXT,
+    NUMBER,
+    DATE,
+    YES_NO,
+    MULTIPLE_CHOICE,
+    COORDINATES
+}
 
 

@@ -1,5 +1,6 @@
 package com.example.simplede.presentation.components
 
+
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
@@ -47,9 +48,13 @@ fun BaseScreen(
                 type = TopBarType.CENTERED,
                 navigationIcon = navigationIcon!!,
                 actions = actions,
-                colors = TopAppBarColors(containerColor = SurfaceColor.Primary, titleContentColor = TextColor.OnSurface, navigationIconContentColor =  TextColor.OnSurface,
+                colors = TopAppBarColors(
+                    containerColor = SurfaceColor.Primary,
+                    titleContentColor = TextColor.OnSurface,
+                    navigationIconContentColor = TextColor.OnSurface,
                     actionIconContentColor = TextColor.OnSurface,
-                    scrolledContainerColor = SurfaceColor.Container,),
+                    scrolledContainerColor = SurfaceColor.Container,
+                ),
 
                 )
         }
@@ -63,4 +68,4 @@ fun BaseScreen(
             content()
         }
     }
-} 
+}

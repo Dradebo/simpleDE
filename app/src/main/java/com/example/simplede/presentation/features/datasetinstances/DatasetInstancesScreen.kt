@@ -1,4 +1,4 @@
-package com.example.simplede.presentation.features.datasetinstances
+package com.example.simplede.presentation.features.datasetInstances
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -106,7 +106,7 @@ fun DatasetInstancesScreen(
                                     ),
                                     shadow = true
                                 ),
-                                onCardClick = { 
+                                onCardClick = {
                                     val encodedDatasetName = java.net.URLEncoder.encode(datasetName, "UTF-8")
                                     val encodedPeriod = java.net.URLEncoder.encode(instance.period.id, "UTF-8")
                                     val encodedAttributeOptionCombo = java.net.URLEncoder.encode(instance.attributeOptionCombo, "UTF-8")
@@ -121,7 +121,7 @@ fun DatasetInstancesScreen(
             }
 
             FloatingActionButton(
-                onClick = { 
+                onClick = {
                     val encodedDatasetName = URLEncoder.encode(datasetName, "UTF-8")
                     navController.navigate("CreateDataEntry/$datasetId/$encodedDatasetName")
                 },

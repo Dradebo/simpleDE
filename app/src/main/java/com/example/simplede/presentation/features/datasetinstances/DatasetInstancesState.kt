@@ -1,4 +1,5 @@
-package com.example.simplede.presentation.features.datasetinstances
+package com.example.simplede.presentation.features.datasetInstances
+
 
 import com.example.simplede.domain.model.DatasetInstance
 

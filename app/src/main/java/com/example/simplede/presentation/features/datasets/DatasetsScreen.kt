@@ -1,5 +1,6 @@
 package com.example.simplede.presentation.features.datasets
 
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -90,7 +91,7 @@ fun DatasetsScreen(
             navController = navController,
             actions = {
                 var showFilterDialog by remember { mutableStateOf(false) }
-                
+
                 IconButton(onClick = { viewModel.syncDatasets() }) {
                     Icon(
                         imageVector = Icons.Default.Sync,
@@ -98,7 +99,7 @@ fun DatasetsScreen(
                         tint = TextColor.OnSurface
                     )
                 }
-                
+
                 IconButton(onClick = { showFilterDialog = true }) {
                     Icon(
                         imageVector = Icons.Default.FilterList,
@@ -284,8 +285,8 @@ fun DatasetsScreen(
                                     shadow = true,
                                     additionalInfoColumnState = additionalInfo,
 
-                                ),
-                                onCardClick = { 
+                                    ),
+                                onCardClick = {
                                     navController.navigate("DatasetInstances/${dataset.id}/${dataset.name}")
                                 }
                             )

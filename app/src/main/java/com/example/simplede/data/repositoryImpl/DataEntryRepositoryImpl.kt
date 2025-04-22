@@ -1,5 +1,6 @@
 package com.example.simplede.data.repositoryImpl
 
+
 import com.example.simplede.domain.model.DataValue
 import com.example.simplede.domain.model.ValidationResult
 import com.example.simplede.domain.model.ValidationState
@@ -54,7 +55,7 @@ class DataEntryRepositoryImpl : DataEntryRepository {
                 validationState = ValidationState.VALID
             )
         )
-        
+
         // Store dummy data for each instance
         dummyDataValues["test_instance_1"] = sampleDataValues
     }
@@ -99,7 +100,7 @@ class DataEntryRepositoryImpl : DataEntryRepository {
         // For demo purposes, just do basic validation
         return when {
             value.isBlank() -> ValidationResult(false, ValidationState.ERROR, "This field cannot be empty")
-            dataElement == "DE_AGE" && value.toIntOrNull() == null -> 
+            dataElement == "DE_AGE" && value.toIntOrNull() == null ->
                 ValidationResult(false, ValidationState.ERROR, "Age must be a number")
             dataElement == "DE_GENDER" && !listOf("Male", "Female", "Other").contains(value) ->
                 ValidationResult(false, ValidationState.ERROR, "Invalid gender value")
@@ -108,7 +109,7 @@ class DataEntryRepositoryImpl : DataEntryRepository {
     }
 
     private fun createNewDataValuesList(): List<DataValue> {
-        return dummyDataValues["test_instance_1"]?.map { 
+        return dummyDataValues["test_instance_1"]?.map {
             it.copy(
                 value = null,
                 comment = null,

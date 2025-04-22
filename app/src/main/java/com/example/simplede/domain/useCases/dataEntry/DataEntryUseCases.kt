@@ -1,4 +1,4 @@
-package com.example.simplede.domain.usecase.dataentry
+package com.example.simplede.domain.useCases.dataEntry
 
 import com.example.simplede.domain.model.DataValue
 import com.example.simplede.domain.model.ValidationResult

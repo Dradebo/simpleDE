@@ -1,12 +1,13 @@
-package com.example.simplede.presentation.features.datasetinstances
+package com.example.simplede.presentation.features.datasetInstances
+
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.simplede.data.repositoryImpl.DatasetInstancesRepositoryImpl
-import com.example.simplede.domain.usecase.GetDatasetInstancesUseCase
-import com.example.simplede.domain.usecase.SyncDatasetInstancesUseCase
-import com.example.simplede.domain.usecase.FilterDatasetInstancesUseCase
+import com.example.simplede.domain.useCases.datasetInstances.FilterDatasetInstancesUseCase
+import com.example.simplede.domain.useCases.datasetInstances.GetDatasetInstancesUseCase
+import com.example.simplede.domain.useCases.datasetInstances.SyncDatasetInstancesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -73,7 +74,7 @@ class DatasetInstancesViewModel(
             val currentState = _instancesState.value
             if (currentState is DatasetInstancesState.Success) {
                 _instancesState.value = currentState.copy(isSyncing = true)
-                
+
                 try {
                     val result = syncDatasetInstancesUseCase()
                     result.fold(

@@ -1,12 +1,5 @@
 package com.example.simplede.presentation.features.login
 
-
-
-
-
-
-
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 
@@ -112,15 +105,15 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = { 
+            onClick = {
                 viewModel.login(serverUrl, username, password)
             },
-            enabled = loginState !is LoginState.Loading && 
-                      serverUrl.isNotBlank() && 
-                      username.isNotBlank() && 
-                      password.isNotBlank()
-        ) { 
-            Text("Login") 
+            enabled = loginState !is LoginState.Loading &&
+                    serverUrl.isNotBlank() &&
+                    username.isNotBlank() &&
+                    password.isNotBlank()
+        ) {
+            Text("Login")
         }
     }
 }

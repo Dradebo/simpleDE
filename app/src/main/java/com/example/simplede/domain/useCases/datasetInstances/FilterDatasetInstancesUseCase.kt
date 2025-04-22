@@ -1,4 +1,5 @@
-package com.example.simplede.domain.usecase
+package com.example.simplede.domain.useCases.datasetInstances
+
 
 import com.example.simplede.domain.model.DatasetInstance
 import com.example.simplede.domain.repository.DatasetInstancesRepository

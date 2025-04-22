@@ -1,4 +1,5 @@
-package com.example.simplede.presentation.features.dataentry
+package com.example.simplede.presentation.features.dataEntry
+
 
 import android.R
 import androidx.compose.foundation.layout.Arrangement
@@ -181,7 +182,7 @@ fun CreateNewEntryScreen(
                         val encodedDatasetName = java.net.URLEncoder.encode(datasetName, "UTF-8")
                         val encodedPeriod = java.net.URLEncoder.encode(period, "UTF-8")
                         val encodedAttributeOptionCombo = java.net.URLEncoder.encode(attribute.ifEmpty { "default" }, "UTF-8")
-                        
+
                         navController.navigate(
                             "EditEntry/$datasetId/${state.instanceId}/$encodedDatasetName/$encodedPeriod/$encodedAttributeOptionCombo"
                         )
@@ -193,4 +194,4 @@ fun CreateNewEntryScreen(
             }
         }
     }
-} 
+}

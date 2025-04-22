@@ -1,4 +1,5 @@
-package com.example.simplede.presentation.features.dataentry
+package com.example.simplede.presentation.features.dataEntry
+
 
 import com.example.simplede.domain.model.DataValue
 import com.example.simplede.domain.model.ValidationState

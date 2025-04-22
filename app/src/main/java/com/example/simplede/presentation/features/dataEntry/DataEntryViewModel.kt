@@ -1,11 +1,14 @@
-package com.example.simplede.presentation.features.dataentry
+package com.example.simplede.presentation.features.dataEntry
 
+
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.simplede.data.repositoryImpl.DataEntryRepositoryImpl
 import com.example.simplede.domain.model.DataValue
 import com.example.simplede.domain.model.ValidationState
-import com.example.simplede.domain.usecase.dataentry.DataEntryUseCases
+import com.example.simplede.domain.useCases.dataEntry.DataEntryUseCases
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -101,9 +104,9 @@ class DataEntryViewModel : ViewModel() {
                     )
                     result.onSuccess { savedValue ->
                         val updatedValues = _state.value.dataValues.toMutableList()
-                        val existingIndex = updatedValues.indexOfFirst { 
-                            it.dataElement == savedValue.dataElement && 
-                            it.categoryOptionCombo == savedValue.categoryOptionCombo 
+                        val existingIndex = updatedValues.indexOfFirst {
+                            it.dataElement == savedValue.dataElement &&
+                                    it.categoryOptionCombo == savedValue.categoryOptionCombo
                         }
                         if (existingIndex != -1) {
                             // Update with new value while preserving validation state
@@ -148,22 +151,22 @@ class DataEntryViewModel : ViewModel() {
                         dataValue.categoryOptionCombo,
                         value
                     )
-                    
+
                     // Update the validation state of the current value
                     val updatedDataValue = dataValue.copy(
                         validationState = validationResult.state
                     )
-                    
+
                     // Update the validation state in the list
                     val updatedValues = _state.value.dataValues.toMutableList()
-                    val existingIndex = updatedValues.indexOfFirst { 
-                        it.dataElement == dataValue.dataElement && 
-                        it.categoryOptionCombo == dataValue.categoryOptionCombo 
+                    val existingIndex = updatedValues.indexOfFirst {
+                        it.dataElement == dataValue.dataElement &&
+                                it.categoryOptionCombo == dataValue.categoryOptionCombo
                     }
                     if (existingIndex != -1) {
                         updatedValues[existingIndex] = updatedDataValue
                     }
-                    
+
                     _state.update { it.copy(
                         dataValues = updatedValues,
                         currentDataValue = updatedDataValue,
@@ -178,6 +181,7 @@ class DataEntryViewModel : ViewModel() {
         _state.update { it.copy(error = null) }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun moveToNextStep(): Boolean {
         val currentStep = _state.value.currentStep
         val totalSteps = _state.value.dataValues.size

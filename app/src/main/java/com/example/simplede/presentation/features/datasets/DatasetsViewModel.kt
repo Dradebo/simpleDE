@@ -1,12 +1,13 @@
 package com.example.simplede.presentation.features.datasets
 
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.simplede.data.repositoryImpl.DatasetsRepositoryImpl
-import com.example.simplede.domain.usecase.FilterDatasetsUseCase
-import com.example.simplede.domain.usecase.GetDatasetsUseCase
-import com.example.simplede.domain.usecase.SyncDatasetsUseCase
+import com.example.simplede.domain.useCases.datasets.FilterDatasetsUseCase
+import com.example.simplede.domain.useCases.datasets.GetDatasetsUseCase
+import com.example.simplede.domain.useCases.datasets.SyncDatasetsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -25,7 +26,7 @@ class DatasetsViewModelFactory : ViewModelProvider.Factory {
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-    }
+}
 
 
 class DatasetsViewModel(
@@ -72,7 +73,7 @@ class DatasetsViewModel(
             val currentState = _datasetsState.value
             if (currentState is DatasetsState.Success) {
                 _datasetsState.value = currentState.copy(isSyncing = true)
-                
+
                 try {
                     val result = syncDatasetsUseCase()
                     result.fold(

@@ -13,12 +13,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.navigation.NavType
-import com.example.simplede.presentation.features.dataentry.CreateNewEntryScreen
-import com.example.simplede.presentation.features.dataentry.DataEntryViewModel
-import com.example.simplede.presentation.features.dataentry.EditEntryScreen
+import com.example.simplede.presentation.features.dataEntry.CreateNewEntryScreen
+import com.example.simplede.presentation.features.dataEntry.DataEntryViewModel
+import com.example.simplede.presentation.features.dataEntry.EditEntryScreen
+import com.example.simplede.presentation.features.datasetInstances.DatasetInstancesScreen
+import com.example.simplede.presentation.features.datasetInstances.DatasetInstancesViewModelFactory
 import com.example.simplede.presentation.features.datasets.DatasetsScreen
-import com.example.simplede.presentation.features.datasetinstances.DatasetInstancesScreen
-import com.example.simplede.presentation.features.datasetinstances.DatasetInstancesViewModelFactory
 import com.example.simplede.presentation.features.login.LoginScreen
 import org.hisp.dhis.mobile.ui.designsystem.theme.DHIS2Theme
 
@@ -63,10 +63,10 @@ class MainActivity : ComponentActivity() {
                             val datasetId = backStackEntry.arguments?.getString("datasetId") ?: ""
                             val datasetName = backStackEntry.arguments?.getString("datasetName") ?: ""
                             val viewModel: DataEntryViewModel = viewModel()
-                            
+
                             // Initialize the new entry with the dataset ID and name
                             viewModel.initializeNewEntry(datasetId, datasetName)
-                            
+
                             CreateNewEntryScreen(
                                 navController = navController,
                                 datasetId = datasetId,
@@ -89,17 +89,12 @@ class MainActivity : ComponentActivity() {
                             val datasetName = backStackEntry.arguments?.getString("datasetName") ?: ""
                             val period = backStackEntry.arguments?.getString("period") ?: ""
                             val attributeOptionCombo = backStackEntry.arguments?.getString("attributeOptionCombo") ?: ""
-                            
+
                             val viewModel: DataEntryViewModel = viewModel()
                             viewModel.loadExistingEntry(datasetId)
-                            
+
                             EditEntryScreen(
-                                navController = navController,
-                                datasetId = datasetId,
-                                instanceId = instanceId,
-                                datasetName = datasetName,
-                                period = period,
-                                attributeOptionCombo = attributeOptionCombo
+                                viewModel = viewModel
                             )
                         }
                     }
